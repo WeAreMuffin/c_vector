@@ -1,1 +1,5 @@
-c_vector*
+c_vector.config
+c_vector.creator
+c_vector.creator.user
+c_vector.files
+c_vector.includes
