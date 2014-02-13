@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 16:35:54 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 18:31:48 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,11 @@ t_vector			*new_vector(size_t elt_size, void (*_delete)(void *))
 		v->push = c_vector_push;
 		v->free = vector_free;
 		v->v_capacity = &vector_capacity;
-		v->is_empty = &vector_is_emptty;
+		v->is_empty = &vector_is_empty;
 		v->at = &vector_at;
+		v->size = &vector_size;
+		v->front = &vector_front;
+		v->back = &vector_back;
 		v->delete_function = _delete != NULL ? _delete : NULL;
 	}
 	return (v);

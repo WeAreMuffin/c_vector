@@ -6,7 +6,7 @@
 #    By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/26 22:57:40 by aaubin            #+#    #+#              #
-#    Updated: 2014/02/13 17:36:01 by aaubin           ###   ########.fr        #
+#    Updated: 2014/02/13 18:24:34 by aleger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ SRC=c_vector.c\
 	c_vector_ops.c\
 	ft_realloc.c\
 	c_vector_capacity.c\
-	c_vector_remove.c
-
+	c_vector_remove.c\
+	c_vector_access.c
 NOM=$(basename $(SRC))
 OBJ=$(addsuffix .o, $(NOM))
 

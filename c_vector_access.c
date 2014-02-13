@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_vector_remove.c                                  :+:      :+:    :+:   */
+/*   c_vector_access.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aleger <aleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/13 18:40:23 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 18:40:37 by aaubin           ###   ########.fr       */
+/*   Created: 2014/02/13 17:56:41 by aleger            #+#    #+#             */
+/*   Updated: 2014/02/13 18:35:44 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c_vector.h"
 
-void			vector_free(t_vector *self)
+void			*vector_at(t_vector *self, int request)
 {
-	size_t i;
+	return (VECTOR_INDEX(request));
+}
 
-	i = 0;
-	if (self->delete_function != NULL)
-	{
-		while (i < self->count)
-		{
-			self->delete_function(VECTOR_INDEX(i));
-			i++;
-		}
-	}
-	self->count = 0;
-	self->capacity = 0;
-	free(self->content);
-	self->content = NULL;
+void			*vector_front(t_vector *self)
+{
+	return (VECTOR_INDEX(0));
+}
+
+void			*vector_back(t_vector *self)
+{
+	return (VECTOR_INDEX(self->size(self)));
 }

@@ -3,3 +3,8 @@ c_vector.creator
 c_vector.creator.user
 c_vector.files
 c_vector.includes
+.gitignore
+*.swp
+*.un~
+*.o
+*.a

@@ -106,5 +106,50 @@ int				main(void)
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content = NULL));
 
+
+	/*
+	** =========================== END OF AAUBIN TESTS =========================
+	*/
+
+	/* Couscous tests */
+
+	// create a new vector
+	v = new_vector(sizeof(t_car), NULL);
+	assert(v);
+
+	c = create_car(4, 5, 150, 0xFFFFFF);
+	assert(c);
+
+	print_car(c);
+	v->push(c, v);
+	printf("%d\n", v->size(v));
+
+	c = create_car(2, 0, 100, 0xffccaa);
+	assert(c);
+
+	print_car(c);
+	v->push(c, v);
+	printf("%d\n", v->size(v));
+
+	v->pop(c, v);
+
+	print_car(c);
+	v->pop(c, v);
+	printf("%d\n", v->size(v));
+
+	print_car(c);
+	printf("\n");
+	for (i = 0; i < v->size(v); ++i) {
+		c = (t_car *)v->at(v, i);
+		print_car(c);
+	}
+	printf("\n");
+	print_car((t_car *)v->front(v));
+	printf("\n");
+	print_car((t_car *)v->back(v));
+	printf("\n%d\n", v->is_empty(v, 20));
+	printf("\n%d\n", v->is_empty(v, 2));
+	printf("\n%zu\n", v->v_capacity(v));
+
 	return (0);
 }

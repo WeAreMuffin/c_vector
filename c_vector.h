@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 17:50:21 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 18:47:03 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ typedef struct			s_vector
 	int					(*push)(void *, struct s_vector *);
 	void				(*pop)(void *, struct s_vector *);
 	int					(*size)(struct s_vector *);
-	int					(*free)(struct s_vector *);
+	void				(*free)(struct s_vector *);
 	size_t				(*v_capacity)(struct s_vector *);
 	int					(*is_empty)(struct s_vector *, int);
 	void				*(*at)(struct s_vector *, int);
+	void				*(*front)(struct s_vector *);
+	void				*(*back)(struct s_vector *);
 	void				(*delete_function)(void *);
 }						t_vector;
 
@@ -68,10 +70,17 @@ void					*ft_memalloc(size_t size);
 ** vector_capacity
 */
 
-int						vector_size(t_vector *v);
-size_t					vector_capacity(t_vector *v);
-int						vector_is_empty(t_vector *v);
-void					*vector_at(t_vector *v);
+int						vector_size(t_vector *self);
+size_t					vector_capacity(t_vector *self);
+int						vector_is_empty(t_vector *self, int request);
+
+/*
+** vector_access
+*/
+
+void					*vector_at(t_vector *self, int request);
+void					*vector_front(t_vector *self);
+void					*vector_back(t_vector *self);
 
 /*
 ** delete functions
