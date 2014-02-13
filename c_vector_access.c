@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_vector_capacity.c                                :+:      :+:    :+:   */
+/*   c_vector_access.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aleger <aleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/13 16:15:00 by aleger            #+#    #+#             */
-/*   Updated: 2014/02/13 18:20:26 by aleger           ###   ########.fr       */
+/*   Created: 2014/02/13 17:56:41 by aleger            #+#    #+#             */
+/*   Updated: 2014/02/13 18:35:44 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c_vector.h"
-#include <stdlib.h>
 
-int				vector_size(t_vector *self)
+void			*vector_at(t_vector *self, int request)
 {
-	return (self->count);
+	return (VECTOR_INDEX(request));
 }
 
-size_t			vector_capacity(t_vector *self)
+void			*vector_front(t_vector *self)
 {
-	return (self->capacity);
+	return (VECTOR_INDEX(0));
 }
 
-int				vector_is_empty(t_vector *self, int request)
+void			*vector_back(t_vector *self)
 {
-	return ((VECTOR_INDEX(request)) ? 1 : 0);
+	return (VECTOR_INDEX(self->size(self)));
 }
