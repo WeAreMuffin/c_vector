@@ -98,6 +98,7 @@ void					*vector_back(t_vector *self);
 ** Iterate functions
 */
 void					*c_vector_each(t_vector *self);
+void					*c_vector_map(t_vector *self, void (*fct)(void *elt));
 
 /*
 ** delete functions

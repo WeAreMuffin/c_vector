@@ -25,3 +25,15 @@ void			*c_vector_each(t_vector *self)
 	self->cursor++;
 	return (self->at(self, pos));
 }
+
+void			*c_vector_map(t_vector *self, void (*fct)(void *elt))
+{
+	int			pos;
+
+	pos = 0;
+	while (pos < self->count)
+	{
+		fct(self->at(self, pos));
+		pos++;
+	}
+}
