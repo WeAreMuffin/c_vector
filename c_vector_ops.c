@@ -6,13 +6,13 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 22:45:42 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 22:47:46 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c_vector.h"
 
-static void			c_vector_extend(size_t size, t_vector *self)
+static void			vector_extend(size_t size, t_vector *self)
 {
 	size_t			old_c;
 
@@ -25,7 +25,7 @@ static void			c_vector_extend(size_t size, t_vector *self)
 								self->elt_size * self->capacity);
 }
 
-static int			c_vector_insert(void *elem, size_t index, t_vector *self)
+static int			vector_insert(void *elem, size_t index, t_vector *self)
 {
 	void			*target;
 
@@ -38,7 +38,7 @@ static int			c_vector_insert(void *elem, size_t index, t_vector *self)
 	else
 	{
 		if (!VECTOR_SPACE(self))
-			c_vector_extend(0, self);
+			vector_extend(0, self);
 		target = VECTOR_INDEX(self->count);
 		self->count++;
 	}
@@ -48,7 +48,7 @@ static int			c_vector_insert(void *elem, size_t index, t_vector *self)
 
 int					vector_push(void *elem, t_vector *self)
 {
-	return (c_vector_insert(elem, -1, self));
+	return (vector_insert(elem, -1, self));
 }
 
 void				vector_pop(void *elem, t_vector *self)
