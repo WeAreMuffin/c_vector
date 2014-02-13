@@ -48,6 +48,7 @@ typedef struct			s_vector
 	int					(*push)(void *, struct s_vector *);
 	void				(*pop)(void *, struct s_vector *);
 	int					(*size)(struct s_vector *);
+	void				(*free)(struct s_vector *);
 	size_t				(*v_capacity)(struct s_vector *);
 	int					(*is_empty)(struct s_vector *, int);
 	void				*(*at)(struct s_vector *, int);
@@ -80,5 +81,11 @@ int						vector_is_empty(t_vector *self, int request);
 void					*vector_at(t_vector *self, int request);
 void					*vector_front(t_vector *self);
 void					*vector_back(t_vector *self);
+
+/*
+** delete functions
+*/
+
+void					vector_free(t_vector *self);
 
 #endif /* !C_VECTOR_H */

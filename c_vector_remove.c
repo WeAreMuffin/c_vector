@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_vector_capacity.c                                :+:      :+:    :+:   */
+/*   c_vector_remove.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleger <aleger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/13 16:15:00 by aleger            #+#    #+#             */
-/*   Updated: 2014/02/13 19:01:20 by aleger           ###   ########.fr       */
+/*   Created: 2014/02/13 18:40:23 by aaubin            #+#    #+#             */
+/*   Updated: 2014/02/13 18:40:37 by aaubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c_vector.h"
-#include <stdlib.h>
 
-int				vector_size(t_vector *self)
+void			vector_free(t_vector *self)
 {
-	return (self->count);
-}
+	size_t i;
 
-size_t			vector_capacity(t_vector *self)
-{
-	return (self->capacity);
-}
-
-int				vector_is_empty(t_vector *self, int request)
-{
-	return ((VECTOR_INDEX(request) == NULL) ? 1 : 0);
+	i = 0;
+	if (self->delete_function != NULL)
+	{
+		while (i < self->count)
+		{
+			self->delete_function(VECTOR_INDEX(i));
+			i++;
+		}
+	}
+	self->count = 0;
+	self->capacity = 0;
+	free(self->content);
+	self->content = NULL;
 }
