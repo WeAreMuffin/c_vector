@@ -92,6 +92,23 @@ int				main(void)
 	free(c);
 	test("Pushing a 4th t_car element", (v->count == 4));
 
+	// Iteration tests
+	test("[start] Iterate on the t_car elements", 1);
+	while (c = v->each(v))
+	{
+		printf("\t - [car %d] ", v->cursor);
+		print_car(c);
+	}
+	test("[end] Iterate on the t_car elements", (!c && v->cursor == 0));
+
+	// Re-Iteration tests
+	test("[start] Re-Iterate on the t_car elements", 1);
+	while (c = v->each(v))
+	{
+		printf("\t - [car %d] ", v->cursor);
+		print_car(c);
+	}
+	test("[end] Re-Iterate on the t_car elements", (!c && v->cursor == 0));
 
 	// Pop tests
 	v->pop(sec, v);

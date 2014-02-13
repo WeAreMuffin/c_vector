@@ -6,7 +6,7 @@
 #    By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/26 22:57:40 by aaubin            #+#    #+#              #
-#    Updated: 2014/02/13 18:24:34 by aleger           ###   ########.fr        #
+#    Updated: 2014/02/13 21:49:08 by aaubin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ NAME=libvector.a
 
 SRC=c_vector.c\
 	c_vector_ops.c\
+	c_vector_iterate.c\
 	ft_realloc.c\
 	c_vector_memory.c\
 	c_vector_capacity.c\

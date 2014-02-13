@@ -42,6 +42,7 @@
 typedef struct			s_vector
 {
 	size_t				count;
+	size_t				cursor;
 	size_t				capacity;
 	void				*content;
 	size_t				elt_size;
@@ -55,6 +56,7 @@ typedef struct			s_vector
 	void				*(*at)(struct s_vector *, int);
 	void				*(*front)(struct s_vector *);
 	void				*(*back)(struct s_vector *);
+	void				*(*each)(struct s_vector *);
 	void				(*delete_function)(void *);
 }						t_vector;
 
@@ -83,6 +85,11 @@ int						vector_is_empty(t_vector *self, int request);
 void					*vector_at(t_vector *self, int request);
 void					*vector_front(t_vector *self);
 void					*vector_back(t_vector *self);
+
+/*
+** Iterate functions
+*/
+void					*c_vector_each(t_vector *self);
 
 /*
 ** delete functions
