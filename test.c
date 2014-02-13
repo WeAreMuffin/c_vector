@@ -57,6 +57,7 @@ int				main(void)
 	t_vector	*v;
 	t_car		*c;
 	t_car		*sec;
+	int			i;
 
 	// create a new vector tests
 	v = new_vector(sizeof(t_car), NULL);
@@ -104,7 +105,7 @@ int				main(void)
 
 	// Remove tests
 	v->free(v);
-	test("Cleaning up the vector", (v->count == 0 && v->content = NULL));
+	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
 
 
 	/*
@@ -139,7 +140,8 @@ int				main(void)
 
 	print_car(c);
 	printf("\n");
-	for (i = 0; i < v->size(v); ++i) {
+	for (i = 0; i < v->size(v); ++i)
+	{
 		c = (t_car *)v->at(v, i);
 		print_car(c);
 	}
