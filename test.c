@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 22:14:17 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 22:36:09 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int				main(void)
 	int			i;
 
 	// create a new vector tests
-	v = new_vector(sizeof(t_car), NULL);
+	/*v = new_vector(sizeof(t_car), NULL);
 	test("Creating a new vector<t_car>", (v != NULL));
 
 	c = create_car(4, 5, 150, 0xFFFFFF);
@@ -96,18 +96,18 @@ int				main(void)
 
 	// Iteration tests
 	test("[start] Iterate on the t_car elements", 1);
-	while (c = v->each(v))
+	while ((c = v->each(v)))
 	{
-		printf("\t - [car %d] ", v->cursor);
+		printf("\t - [car %zu] ", v->cursor);
 		print_car(c);
 	}
 	test("[end] Iterate on the t_car elements", (!c && v->cursor == 0));
 
 	// Re-Iteration tests
 	test("[start] Re-Iterate on the t_car elements", 1);
-	while (c = v->each(v))
+	while ((c = v->each(v)))
 	{
-		printf("\t - [car %d] ", v->cursor);
+		printf("\t - [car %zu] ", v->cursor);
 		print_car(c);
 	}
 	test("[end] Re-Iterate on the t_car elements", (!c && v->cursor == 0));
@@ -175,7 +175,7 @@ int				main(void)
 
 	write(1, "\n\e[37mRun [leaks test_vecor] to check leaks, then press\e[34m Enter \e[0m", 80);
 	read(0, NULL, 1);
-
+*/
 	/*
 	** =========================== END OF AAUBIN TESTS =========================
 	*/
@@ -187,6 +187,8 @@ int				main(void)
 	v = new_vector(sizeof(t_car), NULL);
 	assert(v);
 
+	printf("%zu\n", v->size(v));
+	printf("%zu\n", v->count);
 	test("Size is 0", v->size(v) == 0);
 	c = create_car(4, 0, 150, 0xFFFFFF);
 	assert(c);
@@ -232,6 +234,10 @@ int				main(void)
 	v->swap(v, 0, 1);
 	printf("%d\n", ((t_car *)v->at(v, 0))->max_speed);
 	printf("%d\n", ((t_car *)v->at(v, 1))->max_speed);
+
+	c = (t_car *)v->data(v, 0);
+	c->max_speed = 600;
+	printf("c: %d at: %d\n", c->max_speed, ((t_car *)v->at(v, 0))->max_speed);
 	
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
