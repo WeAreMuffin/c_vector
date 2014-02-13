@@ -251,5 +251,7 @@ int				main(void)
 
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
+
+	printf("\n\t\t\e[32m====\tOkay ! All seems works well !\t====\e[0m\n");
 	return (0);
 }
