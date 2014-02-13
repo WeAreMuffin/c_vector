@@ -6,7 +6,7 @@
 /*   By: aleger <aleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 16:15:00 by aleger            #+#    #+#             */
-/*   Updated: 2014/02/13 19:59:47 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 20:01:49 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t			vector_capacity(t_vector *self)
 	return (self->capacity);
 }
 
-int				vector_is_empty(t_vector *self, int request)
+int				vector_is_empty(t_vector *self)
 {
 	return (self->count == 0);
 }
