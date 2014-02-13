@@ -6,7 +6,7 @@
 #    By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/26 22:57:40 by aaubin            #+#    #+#              #
-#    Updated: 2014/02/13 01:07:56 by aaubin           ###   ########.fr        #
+#    Updated: 2014/02/13 17:36:01 by aaubin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) $(LFLAGS) -g -o $@ -c $< $(CFLAGS)
+	$(CC) -g -o $@ -c $< $(CFLAGS)
 
 clean:
 	@rm -rf $(OBJ)

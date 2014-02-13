@@ -59,7 +59,15 @@ int				main(void)
 	print_car(c);
 	v->push(c, v);
 
-	c = NULL;
+	c = create_car(2, 0, 100, 0xffccaa);
+	assert(c != NULL);
+
+	print_car(c);
+	v->push(c, v);
+
+	v->pop(c, v);
+
+	print_car(c);
 	v->pop(c, v);
 
 	print_car(c);
