@@ -70,22 +70,26 @@ int				main(void)
 
 	// Push tests
 	v->push(c, v);
+	free(c);
 	test("Pushing a first t_car element", (v->count == 1));
 	assert(v->elt_size == sizeof(t_car));
 
 	c = create_car(2, 0, 100, 0xffccaa);
 	assert(c != NULL);
 	v->push(c, v);
+	free(c);
 	test("Pushing a second t_car element", (v->count == 2));
 
 	c = create_car(1, 0, 10, 0xffffaa);
 	assert(c != NULL);
 	v->push(c, v);
+	free(c);
 	test("Pushing a 3th t_car element", (v->count == 3));
 
 	c = create_car(8, 3, 150, 0xffffaa);
 	assert(c != NULL);
 	v->push(c, v);
+	free(c);
 	test("Pushing a 4th t_car element", (v->count == 4));
 
 
@@ -101,6 +105,7 @@ int				main(void)
 	c = create_car(50, 3, 150, 0xffffaa);
 	assert(c != NULL);
 	v->push(c, v);
+	free(c);
 	test("Pushing a 2th t_car element with 50 wheels", (v->count == 2));
 
 	// RemoveOne tests
@@ -113,7 +118,45 @@ int				main(void)
 	// Remove tests
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
+	free(v);
 
+	// Memory leaks test loop
+	i = 300;
+	test("Trying to make a parking of 300 cars", 1);
+	while (i)
+	{
+		v = new_vector(sizeof(t_car), NULL);
+		c = create_car(2, 0, 100, 0xffccaa);
+		assert(c != NULL);
+		v->push(c, v);
+		free(c);
+		c = create_car(2, 0, 100, 0xffccaa);
+		assert(c != NULL);
+		v->push(c, v);
+		free(c);
+		c = create_car(2, 0, 100, 0xffccaa);
+		assert(c != NULL);
+		v->push(c, v);
+		free(c);
+		c = create_car(2, 0, 100, 0xffccaa);
+		assert(c != NULL);
+		v->push(c, v);
+		free(c);
+		v->pop(sec, v);
+		v->pop(sec, v);
+		v->remove(1, v);
+		v->free(v);
+		free(v);
+		i--;
+		write(1, "-o=o ", 5);
+		if (i % 14 == 0)
+			write(1, "\n", 1);
+		usleep(200);
+	}
+	free(sec);
+
+	write(1, "\n\e[37mRun [leaks test_vecor] to check leaks, then press\e[34m Enter \e[0m", 80);
+	read(0, NULL, 1);
 
 	/*
 	** =========================== END OF AAUBIN TESTS =========================
