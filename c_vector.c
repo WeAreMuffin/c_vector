@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/12 22:12:05 by aaubin           ###   ########.fr       */
+/*   Updated: 2014/02/13 16:35:54 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ static int			c_vector_insert(void *elem, size_t index, t_vector *self)
 
 static int			c_vector_push(void *elem, t_vector *self)
 {
-	return(c_vector_insert(elem, -1, self));
+	return (c_vector_insert(elem, -1, self));
 }
 
 static void			c_vector_pop(void *elem, t_vector *self)
 {
-	memcpy(elem, VECTOR_INDEX(self->count - 1), self->elt_size);
+	ft_memcpy(elem, VECTOR_INDEX(self->count - 1), self->elt_size);
 	self->count--;
 }
 
@@ -71,6 +71,9 @@ t_vector			*new_vector(size_t elt_size, void (*_delete)(void *))
 		v->elt_size = elt_size;
 		v->pop = c_vector_pop;
 		v->push = c_vector_push;
+		v->v_capacity = &vector_capacity;
+		v->is_empty = &vector_is_emptty;
+		v->at = &vector_at;
 		v->delete_function = _delete != NULL ? _delete : NULL;
 	}
 	return (v);
