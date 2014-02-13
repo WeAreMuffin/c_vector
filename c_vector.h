@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 22:01:04 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 22:43:32 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ typedef struct			s_vector
 	size_t				elt_size;
 	int					(*push)(void *, struct s_vector *);
 	void				(*pop)(void *, struct s_vector *);
-	int					(*size)(struct s_vector *);
+	size_t				(*size)(struct s_vector *);
 	void				(*free)(struct s_vector *);
 	int					(*remove)(size_t, struct s_vector *);
 	size_t				(*v_capacity)(struct s_vector *);
 	int					(*is_empty)(struct s_vector *);
 	void				(*swap)(struct s_vector *, int, int);
 	void				*(*at)(struct s_vector *, int);
+	void				*(*data)(struct s_vector *, int);
 	void				*(*front)(struct s_vector *);
 	void				*(*back)(struct s_vector *);
 	void				*(*each)(struct s_vector *);
@@ -76,7 +77,7 @@ void					*c_vector_memmove(void *s1, const void *s2, size_t n);
 ** vector_capacity
 */
 
-int						vector_size(t_vector *self);
+size_t					vector_size(t_vector *self);
 size_t					vector_capacity(t_vector *self);
 int						vector_is_empty(t_vector *self);
 
@@ -85,6 +86,8 @@ int						vector_is_empty(t_vector *self);
 */
 
 void					vector_swap(t_vector *self, int index_1, int index_2);
+void					vector_pop(void *elem, t_vector *self);
+int						vector_push(void *elem, t_vector *self);
 
 /*
 ** vector_access
@@ -93,6 +96,7 @@ void					vector_swap(t_vector *self, int index_1, int index_2);
 void					*vector_at(t_vector *self, int request);
 void					*vector_front(t_vector *self);
 void					*vector_back(t_vector *self);
+void					*vector_data(t_vector *self, int request);
 
 /*
 ** Iterate functions
