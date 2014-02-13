@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 19:49:55 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 20:00:00 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,13 @@ int				main(void)
 	v->push(c, v);
 	test("Pushing a 2th t_car element with 50 wheels", (v->count == 2));
 
+	// RemoveOne tests
+	v->remove(1, v);
+	test("Removing the (2th) element", (v->count == 1));
+	v->pop(sec, v);
+	test("Popping the last (1st) element", (sec != NULL && sec->wheels == 4));
+	test("Is the vector empty ?", (v->count == 0));
+
 	// Remove tests
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
@@ -141,6 +148,16 @@ int				main(void)
 
 	v->push(c, v);
 	test("Size is 3", v->size(v) == 3);
+	v->push(c, v);
+	test("Size is 4", v->size(v) == 4);
+	v->push(c, v);
+	test("Size is 5", v->size(v) == 5);
+	test("Capacity is 5", v->v_capacity(v) == 5);
+	v->pop(c, v);
+	v->pop(c, v);
+	v->pop(c, v);
+	test("Size is 2", v->size(v) == 2);
+	test("Capacity is 5", v->v_capacity(v) == 5);
 
 	printf("\n");
 	for (i = 0; i < v->size(v); ++i)
@@ -153,12 +170,7 @@ int				main(void)
 	test("Back car", t2->doors == ((t_car *)v->back(v))->doors);
 
 	printf("\n");
-	printf("empty true: %d\n", v->is_empty(v, 50));
-	printf("empty false: %d\n", v->is_empty(v, 0));
-
-	printf("\n");
-	test("Good capacity", v->v_capacity(v) == 4);
-	printf("%zu\n", sizeof(v));
+	test("Good capacity", v->v_capacity(v) == v->capacity);
 	
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));

@@ -12,9 +12,9 @@
 
 #include "c_vector.h"
 
-void			vector_free(t_vector *self)
+void			c_vector_free(t_vector *self)
 {
-	size_t i;
+	size_t		i;
 
 	i = 0;
 	if (self->delete_function != NULL)
@@ -29,4 +29,20 @@ void			vector_free(t_vector *self)
 	self->capacity = 0;
 	free(self->content);
 	self->content = NULL;
+}
+
+int				c_vector_remove(size_t i, t_vector *self)
+{
+	if (i > 0)
+	{
+		if (!VECTOR_INBOUNDS(i))
+			return (0);
+		c_vector_memmove(VECTOR_INDEX(i), VECTOR_INDEX(i + 1), self->elt_size);
+		self->count--;
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }
