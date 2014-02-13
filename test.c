@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 20:12:02 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 22:14:17 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,12 +176,14 @@ int				main(void)
 	t1 = c;
 
 	v->push(c, v);
+	free(c);
 	test("Size is 1", v->size(v) == 1);
 
 	c = create_car(2, 1, 100, 0xffccaa);
 	assert(c);
 
 	v->push(c, v);
+	free(c);
 	test("Size is 2", v->size(v) == 2);
 
 	c = create_car(5, 2, 380, 0xCACA);
@@ -189,21 +191,30 @@ int				main(void)
 	t2 = c;
 
 	v->push(c, v);
+	free(c);
 	test("Size is 3", v->size(v) == 3);
 
 
 	printf("\n");
-	for (i = 0; i < v->size(v); ++i)
+	/*for (i = 0; i < v->size(v); ++i)
 	{
 		c = (t_car *)v->at(v, i);
 		test("Good car", c->doors == i);
 	}
 	printf("\n");
 	test("Front car", t1->doors == ((t_car *)v->front(v))->doors);
-	test("Back car", t2->doors == ((t_car *)v->back(v))->doors);
+	test("Back car", t2->doors == ((t_car *)v->back(v))->doors);*/
 
 	printf("\n");
 	test("Good capacity", v->v_capacity(v) == v->capacity);
+	
+	v->swap(v, 0, 1);
+	printf("%d\n", ((t_car *)v->at(v, 0))->max_speed);
+	printf("%d\n", ((t_car *)v->at(v, 1))->max_speed);
+
+	v->swap(v, 0, 1);
+	printf("%d\n", ((t_car *)v->at(v, 0))->max_speed);
+	printf("%d\n", ((t_car *)v->at(v, 1))->max_speed);
 	
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
