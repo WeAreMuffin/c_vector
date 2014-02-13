@@ -49,6 +49,7 @@ typedef struct			s_vector
 	void				(*pop)(void *, struct s_vector *);
 	int					(*size)(struct s_vector *);
 	void				(*free)(struct s_vector *);
+	int					(*remove)(size_t, struct s_vector *);
 	size_t				(*v_capacity)(struct s_vector *);
 	int					(*is_empty)(struct s_vector *, int);
 	void				*(*at)(struct s_vector *, int);
@@ -65,6 +66,7 @@ t_vector				*new_vector(size_t elt_size, void (*_delete)(void *));
 void					*ft_realloc(void *ptr, size_t old, size_t size);
 void					*ft_memcpy(void *s1, const void *s2, size_t n);
 void					*ft_memalloc(size_t size);
+void					*c_vector_memmove(void *s1, const void *s2, size_t n);
 
 /*
 ** vector_capacity
@@ -86,6 +88,7 @@ void					*vector_back(t_vector *self);
 ** delete functions
 */
 
-void					vector_free(t_vector *self);
+void					c_vector_free(t_vector *self);
+int						c_vector_remove(size_t i, t_vector *self);
 
 #endif /* !C_VECTOR_H */

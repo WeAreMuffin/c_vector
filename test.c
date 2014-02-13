@@ -103,6 +103,13 @@ int				main(void)
 	v->push(c, v);
 	test("Pushing a 2th t_car element with 50 wheels", (v->count == 2));
 
+	// RemoveOne tests
+	v->remove(1, v);
+	test("Removing the (2th) element", (v->count == 1));
+	v->pop(sec, v);
+	test("Popping the last (1st) element", (sec != NULL && sec->wheels == 4));
+	test("Is the vector empty ?", (v->count == 0));
+
 	// Remove tests
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));

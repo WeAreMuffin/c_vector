@@ -71,7 +71,8 @@ t_vector			*new_vector(size_t elt_size, void (*_delete)(void *))
 		v->elt_size = elt_size;
 		v->pop = c_vector_pop;
 		v->push = c_vector_push;
-		v->free = vector_free;
+		v->free = c_vector_free;
+		v->remove = c_vector_remove;
 		v->v_capacity = &vector_capacity;
 		v->is_empty = &vector_is_empty;
 		v->at = &vector_at;

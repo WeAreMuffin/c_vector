@@ -23,6 +23,7 @@ NAME=libvector.a
 SRC=c_vector.c\
 	c_vector_ops.c\
 	ft_realloc.c\
+	c_vector_memory.c\
 	c_vector_capacity.c\
 	c_vector_remove.c\
 	c_vector_access.c
