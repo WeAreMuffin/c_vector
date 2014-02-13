@@ -52,6 +52,11 @@ void			test(char *test, int assertion)
 	assert(assertion);
 }
 
+void			map_function(t_car *elt)
+{
+	elt->max_speed = 999;
+}
+
 int				main(void)
 {
 	t_vector	*v;
@@ -62,7 +67,7 @@ int				main(void)
 	int			i;
 
 	// create a new vector tests
-	/*v = new_vector(sizeof(t_car), NULL);
+	v = new_vector(sizeof(t_car), NULL);
 	test("Creating a new vector<t_car>", (v != NULL));
 
 	c = create_car(4, 5, 150, 0xFFFFFF);
@@ -111,6 +116,20 @@ int				main(void)
 		print_car(c);
 	}
 	test("[end] Re-Iterate on the t_car elements", (!c && v->cursor == 0));
+
+	v->map(v, map_function);
+	test("Apply function by mapping on the t_car elements", (v));
+
+	// Re-Iteration after map tests
+	test("[start] Re-Iterate after map on the t_car elements", 1);
+	while ((c = v->each(v)))
+	{
+		printf("\t - [car %zu] ", v->cursor);
+		print_car(c);
+		assert(c->max_speed == 999);
+	}
+	test("[end] Re-Iterate after map on the t_car elements",
+			(!c && v->cursor == 0));
 
 	// Pop tests
 	v->pop(sec, v);
@@ -175,7 +194,7 @@ int				main(void)
 
 	write(1, "\n\e[37mRun [leaks test_vecor] to check leaks, then press\e[34m Enter \e[0m", 80);
 	read(0, NULL, 1);
-*/
+
 	/*
 	** =========================== END OF AAUBIN TESTS =========================
 	*/
@@ -226,7 +245,7 @@ int				main(void)
 
 	printf("\n");
 	test("Good capacity", v->v_capacity(v) == v->capacity);
-	
+
 	v->swap(v, 0, 1);
 	printf("%d\n", ((t_car *)v->at(v, 0))->max_speed);
 	printf("%d\n", ((t_car *)v->at(v, 1))->max_speed);
@@ -238,7 +257,7 @@ int				main(void)
 	c = (t_car *)v->data(v, 0);
 	c->max_speed = 600;
 	printf("c: %d at: %d\n", c->max_speed, ((t_car *)v->at(v, 0))->max_speed);
-	
+
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
 	return (0);

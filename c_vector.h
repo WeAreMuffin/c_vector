@@ -59,6 +59,7 @@ typedef struct			s_vector
 	void				*(*front)(struct s_vector *);
 	void				*(*back)(struct s_vector *);
 	void				*(*each)(struct s_vector *);
+	void				(*map)(struct s_vector *self, void (*fct)(void *elt));
 	void				(*delete_function)(void *);
 }						t_vector;
 
@@ -102,7 +103,7 @@ void					*vector_data(t_vector *self, int request);
 ** Iterate functions
 */
 void					*c_vector_each(t_vector *self);
-void					*c_vector_map(t_vector *self, void (*fct)(void *elt));
+void					c_vector_map(t_vector *self, void (*fct)(void *elt));
 
 /*
 ** delete functions
