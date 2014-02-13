@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 19:07:27 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 19:49:55 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int				main(void)
 	t_vector	*v;
 	t_car		*c;
 	t_car		*sec;
+	t_car		*t1;
+	t_car		*t2;
 	int			i;
 
 	// create a new vector tests
@@ -119,38 +121,46 @@ int				main(void)
 	v = new_vector(sizeof(t_car), NULL);
 	assert(v);
 
-	c = create_car(4, 5, 150, 0xFFFFFF);
+	test("Size is 0", v->size(v) == 0);
+	c = create_car(4, 0, 150, 0xFFFFFF);
+	assert(c);
+	t1 = c;
+
+	v->push(c, v);
+	test("Size is 1", v->size(v) == 1);
+
+	c = create_car(2, 1, 100, 0xffccaa);
 	assert(c);
 
-	printf("size before push : %d\n", v->size(v));
 	v->push(c, v);
-	printf("size after push 1: %d\n", v->size(v));
-	print_car(c);
+	test("Size is 2", v->size(v) == 2);
 
-	c = create_car(2, 0, 100, 0xffccaa);
+	c = create_car(5, 2, 380, 0xCACA);
 	assert(c);
+	t2 = c;
 
-	print_car(c);
 	v->push(c, v);
-	printf("size after push 2: %d\n", v->size(v));
-
-	v->pop(c, v);
-	v->pop(c, v);
+	test("Size is 3", v->size(v) == 3);
 
 	printf("\n");
 	for (i = 0; i < v->size(v); ++i)
 	{
 		c = (t_car *)v->at(v, i);
-		print_car(c);
+		test("Good car", c->doors == i);
 	}
-	printf("\nfront car: ");
-	print_car((t_car *)v->front(v));
-	printf("back car: ");
-	print_car((t_car *)v->back(v));
+	printf("\n");
+	test("Front car", t1->doors == ((t_car *)v->front(v))->doors);
+	test("Back car", t2->doors == ((t_car *)v->back(v))->doors);
 
 	printf("\n");
-	printf("empty true: %d\n", v->is_empty(v, 20));
-	printf("empty false: %d\n", v->is_empty(v, 2));
-	printf("capacity: %zu\n", v->v_capacity(v));
+	printf("empty true: %d\n", v->is_empty(v, 50));
+	printf("empty false: %d\n", v->is_empty(v, 0));
+
+	printf("\n");
+	test("Good capacity", v->v_capacity(v) == 4);
+	printf("%zu\n", sizeof(v));
+	
+	v->free(v);
+	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aleger <aleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 17:56:41 by aleger            #+#    #+#             */
-/*   Updated: 2014/02/13 18:35:44 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 19:15:42 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void			*vector_front(t_vector *self)
 
 void			*vector_back(t_vector *self)
 {
-	return (VECTOR_INDEX(self->size(self)));
+	return (VECTOR_INDEX(self->size(self) - 1));
 }

@@ -6,7 +6,7 @@
 /*   By: aleger <aleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 16:15:00 by aleger            #+#    #+#             */
-/*   Updated: 2014/02/13 19:01:20 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 19:23:38 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ size_t			vector_capacity(t_vector *self)
 
 int				vector_is_empty(t_vector *self, int request)
 {
-	return ((VECTOR_INDEX(request) == NULL) ? 1 : 0);
+	return ((VECTOR_INDEX(request)) != NULL);
 }
