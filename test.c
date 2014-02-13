@@ -114,6 +114,7 @@ int				main(void)
 
 	/* Couscous tests */
 
+	printf("\n\n\n================= COUSCOUUUUUUS =====================\n\n");
 	// create a new vector
 	v = new_vector(sizeof(t_car), NULL);
 	assert(v);
