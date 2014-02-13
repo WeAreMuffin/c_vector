@@ -11,13 +11,21 @@
 # **************************************************************************** #
 
 CC=clang
+
 LKFLAGS=-Wall -Wextra -pedantic #-Werror
+
 CFLAGS=-Wall -Wextra -pedantic #-Werror
+
 LDFLAGS=-g
+
 NAME=libvector.a
+
 SRC=c_vector.c\
 	c_vector_ops.c\
-	ft_realloc.c
+	ft_realloc.c\
+	c_vector_capacity.c\
+	c_vector_remove.c
+
 NOM=$(basename $(SRC))
 OBJ=$(addsuffix .o, $(NOM))
 

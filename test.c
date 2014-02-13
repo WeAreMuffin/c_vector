@@ -102,5 +102,9 @@ int				main(void)
 	v->push(c, v);
 	test("Pushing a 2th t_car element with 50 wheels", (v->count == 2));
 
+	// Remove tests
+	v->free(v);
+	test("Cleaning up the vector", (v->count == 0 && v->content = NULL));
+
 	return (0);
 }
