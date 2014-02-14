@@ -6,15 +6,15 @@
 #    By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/26 22:57:40 by aaubin            #+#    #+#              #
-#    Updated: 2014/02/13 22:17:54 by aaubin           ###   ########.fr        #
+#    Updated: 2014/02/14 16:24:20 by aleger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=clang
 
-LKFLAGS=-Wall -Wextra -pedantic #-Werror
+LKFLAGS=-Wall -Wextra -pedantic -Werror
 
-CFLAGS=-Wall -Wextra -pedantic #-Werror
+CFLAGS=-Wall -Wextra -pedantic -Werror
 
 LDFLAGS=-g
 
