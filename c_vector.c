@@ -6,10 +6,11 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 22:45:57 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/14 17:26:40 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "c_vector.h"
 
 static void			init_pointers(t_vector **self)
@@ -40,7 +41,7 @@ t_vector			*new_vector(size_t elt_size, void (*_delete)(void *))
 		v->count = 0;
 		v->cursor = 0;
 		v->capacity = VECTOR_INIT_SIZE;
-		v->content = ft_memalloc(elt_size * v->capacity);
+		v->content = vector_memalloc(elt_size * v->capacity);
 		v->elt_size = elt_size;
 		init_pointers(&v);
 		v->delete_function = _delete != NULL ? _delete : NULL;

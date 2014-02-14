@@ -6,10 +6,11 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 18:40:23 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 18:40:37 by aaubin           ###   ########.fr       */
+/*   Updated: 2014/02/14 16:58:33 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "c_vector.h"
 
 void			c_vector_free(t_vector *self)

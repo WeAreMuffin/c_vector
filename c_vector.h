@@ -6,16 +6,14 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 22:43:32 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/14 17:27:08 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C_VECTOR_H
 # define C_VECTOR_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <ctype.h>
+/*# include <ctype.h>*/
 # include <string.h>
 
 /*
@@ -71,9 +69,9 @@ t_vector				*new_vector(size_t elt_size, void (*_delete)(void *));
 /*
 ** memory helpers
 */
-void					*ft_realloc(void *ptr, size_t old, size_t size);
-void					*ft_memcpy(void *s1, const void *s2, size_t n);
-void					*ft_memalloc(size_t size);
+void					*vector_realloc(void *ptr, size_t old, size_t size);
+void					*vector_memcpy(void *s1, const void *s2, size_t n);
+void					*vector_memalloc(size_t size);
 void					*c_vector_memmove(void *s1, const void *s2, size_t n);
 
 /*
