@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 22:36:09 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/14 16:22:52 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include "c_vector.h"
+#include <unistd.h>
 
 typedef struct	s_car
 {
@@ -117,8 +118,8 @@ int				main(void)
 	}
 	test("[end] Re-Iterate on the t_car elements", (!c && v->cursor == 0));
 
-	v->map(v, map_function);
-	test("Apply function by mapping on the t_car elements", (v));
+	v->map(v, (void *)map_function);
+	test("Apply function by mapping on the t_car elements", (v) != NULL);
 
 	// Re-Iteration after map tests
 	test("[start] Re-Iterate after map on the t_car elements", 1);
@@ -245,12 +246,14 @@ int				main(void)
 //	printf("%d\n", ((t_car *)v->at(v, 0))->max_speed);
 //	printf("%d\n", ((t_car *)v->at(v, 1))->max_speed);
 
-	c = (t_car *)v->data(v, 0);
+	c = v->data(v, 0);
 	c->max_speed = 600;
 //	printf("c: %d at: %d\n", c->max_speed, ((t_car *)v->at(v, 0))->max_speed);
 
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
+	(void)sec;
+	(void)i;
 
 	printf("\n\t\t\e[32m====\tOkay ! All seems works well !\t====\e[0m\n");
 	return (0);

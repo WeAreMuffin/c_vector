@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 21:48:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 21:48:52 by aaubin           ###   ########.fr       */
+/*   Updated: 2014/02/14 16:24:47 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			c_vector_map(t_vector *self, void (*fct)(void *elt))
 	int			pos;
 
 	pos = 0;
-	while (pos < self->count)
+	while (pos < (int)self->count)
 	{
 		fct(self->data(self, pos));
 		pos++;
