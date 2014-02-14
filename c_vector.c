@@ -18,6 +18,7 @@ static void			init_pointers(t_vector **self)
 	(*self)->push = &vector_push;
 	(*self)->free = c_vector_free;
 	(*self)->each = c_vector_each;
+	(*self)->map = c_vector_map;
 	(*self)->remove = c_vector_remove;
 	(*self)->v_capacity = &vector_capacity;
 	(*self)->is_empty = &vector_is_empty;

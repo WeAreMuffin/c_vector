@@ -59,15 +59,18 @@ typedef struct			s_vector
 	void				*(*front)(struct s_vector *);
 	void				*(*back)(struct s_vector *);
 	void				*(*each)(struct s_vector *);
+	void				(*map)(struct s_vector *self, void (*fct)(void *elt));
 	void				(*delete_function)(void *);
 }						t_vector;
 
+/*
+** vector contructor
+*/
 t_vector				*new_vector(size_t elt_size, void (*_delete)(void *));
 
 /*
 ** memory helpers
 */
-
 void					*ft_realloc(void *ptr, size_t old, size_t size);
 void					*ft_memcpy(void *s1, const void *s2, size_t n);
 void					*ft_memalloc(size_t size);
@@ -76,7 +79,6 @@ void					*c_vector_memmove(void *s1, const void *s2, size_t n);
 /*
 ** vector_capacity
 */
-
 size_t					vector_size(t_vector *self);
 size_t					vector_capacity(t_vector *self);
 int						vector_is_empty(t_vector *self);
@@ -84,7 +86,6 @@ int						vector_is_empty(t_vector *self);
 /*
 ** vector_operations
 */
-
 void					vector_swap(t_vector *self, int index_1, int index_2);
 void					vector_pop(void *elem, t_vector *self);
 int						vector_push(void *elem, t_vector *self);
@@ -92,7 +93,6 @@ int						vector_push(void *elem, t_vector *self);
 /*
 ** vector_access
 */
-
 void					*vector_at(t_vector *self, int request);
 void					*vector_front(t_vector *self);
 void					*vector_back(t_vector *self);
@@ -102,11 +102,11 @@ void					*vector_data(t_vector *self, int request);
 ** Iterate functions
 */
 void					*c_vector_each(t_vector *self);
+void					c_vector_map(t_vector *self, void (*fct)(void *elt));
 
 /*
 ** delete functions
 */
-
 void					c_vector_free(t_vector *self);
 int						c_vector_remove(size_t i, t_vector *self);
 
