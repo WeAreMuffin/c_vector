@@ -6,14 +6,13 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/14 17:27:08 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/14 18:36:35 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C_VECTOR_H
 # define C_VECTOR_H
 
-/*# include <ctype.h>*/
 # include <string.h>
 
 /*
@@ -25,12 +24,12 @@
 ** a little helper who checks if there is enough space in the current
 ** vector.
 */
-# define VECTOR_SPACE(self)	(((self)->count + 1) <= (self)->capacity)
+# define VECTOR_SPACE(self) (((self)->count + 1) <= (self)->capacity)
 
 /*
 ** check if the given index is into the indexes of the vector
 */
-# define VECTOR_INBOUNDS(i)	(((int) i) >= 0 && (i) < (self)->count)
+# define VECTOR_INBOUNDS(i) (((int) i) >= 0 && (i) < (self)->count)
 
 /*
 ** returns the loaction of the pointer at the given index
