@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/13 22:36:09 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/13 22:50:56 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,11 +235,13 @@ int				main(void)
 	printf("%d\n", ((t_car *)v->at(v, 0))->max_speed);
 	printf("%d\n", ((t_car *)v->at(v, 1))->max_speed);
 
-	c = (t_car *)v->data(v, 0);
+	c = v->data(v, 0);
 	c->max_speed = 600;
 	printf("c: %d at: %d\n", c->max_speed, ((t_car *)v->at(v, 0))->max_speed);
 	
 	v->free(v);
 	test("Cleaning up the vector", (v->count == 0 && v->content == NULL));
+	(void)sec;
+	(void)i;
 	return (0);
 }
