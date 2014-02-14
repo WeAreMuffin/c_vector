@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/14 16:15:11 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/14 16:22:52 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include "c_vector.h"
+#include <unistd.h>
 
 typedef struct	s_car
 {
@@ -117,8 +118,8 @@ int				main(void)
 	}
 	test("[end] Re-Iterate on the t_car elements", (!c && v->cursor == 0));
 
-	v->map(v, map_function);
-	test("Apply function by mapping on the t_car elements", (v));
+	v->map(v, (void *)map_function);
+	test("Apply function by mapping on the t_car elements", (v) != NULL);
 
 	// Re-Iteration after map tests
 	test("[start] Re-Iterate after map on the t_car elements", 1);
