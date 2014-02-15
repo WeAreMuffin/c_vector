@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/14 17:26:40 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/15 02:06:53 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void			init_pointers(t_vector **self)
 	(*self)->back = &vector_back;
 	(*self)->swap = &vector_swap;
 	(*self)->data = &vector_data;
+	(*self)->push_front = &vector_push_front;
+	(*self)->pop_front = &vector_pop_front;
 }
 
 t_vector			*new_vector(size_t elt_size, void (*_delete)(void *))

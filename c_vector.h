@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/14 18:36:35 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/15 02:06:17 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ typedef struct			s_vector
 	int					(*remove)(size_t, struct s_vector *);
 	size_t				(*v_capacity)(struct s_vector *);
 	int					(*is_empty)(struct s_vector *);
+	int					(*push_front)(void *, struct s_vector *);
 	void				(*swap)(struct s_vector *, int, int);
 	void				*(*at)(struct s_vector *, int);
 	void				*(*data)(struct s_vector *, int);
 	void				*(*front)(struct s_vector *);
 	void				*(*back)(struct s_vector *);
+	void				(*pop_front)(void *, struct s_vector *);
 	void				*(*each)(struct s_vector *);
 	void				(*map)(struct s_vector *self, void (*fct)(void *elt));
 	void				(*delete_function)(void *);
@@ -85,7 +87,9 @@ int						vector_is_empty(t_vector *self);
 */
 void					vector_swap(t_vector *self, int index_1, int index_2);
 void					vector_pop(void *elem, t_vector *self);
+void					vector_pop_front(void *elem, t_vector *self);
 int						vector_push(void *elem, t_vector *self);
+int						vector_push_front(void *elem, t_vector *self);
 
 /*
 ** vector_access

@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/14 16:22:52 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/15 02:10:07 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,8 @@ int				main(void)
 		assert(c != NULL);
 		v->push(c, v);
 		free(c);
-		v->pop(sec, v);
-		v->pop(sec, v);
+		v->pop_front(sec, v);
+		v->pop_front(sec, v);
 		v->remove(1, v);
 		v->free(v);
 		free(v);
