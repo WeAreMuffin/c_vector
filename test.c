@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 00:54:38 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/15 02:10:07 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/15 05:22:35 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int				main(void)
 		print_car(c);
 	}
 	test("[end] Re-Iterate on the t_car elements", (!c && v->cursor == 0));
-
+/*
 	v->map(v, (void *)map_function);
 	test("Apply function by mapping on the t_car elements", (v) != NULL);
 
@@ -133,26 +133,56 @@ int				main(void)
 			(!c && v->cursor == 0));
 
 	// Pop tests
-	v->pop(sec, v);
-	test("Popping the last (4th) element", (sec != NULL && sec->wheels == 8));
-	v->pop(sec, v);
-	test("Popping the last (3th) element", (sec != NULL && sec->wheels == 1));
-	v->pop(sec, v);
-	test("Popping the last (2th) element", (sec != NULL && sec->wheels == 2));
+	v->pop_front(sec, v);
+	test("Popping the first (1th) element", (sec != NULL && sec->wheels == 4));
+	print_car(sec);
+	v->pop_front(sec, v);
+	test("Popping the first (2th) element", (sec != NULL && sec->wheels == 2));
+	print_car(sec);
+	v->pop_front(sec, v);
+	test("Popping the first (3th) element", (sec != NULL && sec->wheels == 1));
+	print_car(sec);
+*/
+
+	while ((c = v->each(v)))
+	{
+		write(1, "@@@", 3);
+		print_car(c);
+	}
+	v->swap(v, 0, 3);
+	v->swap(v, 1, 2);
+	write(1, "\n", 1);
+	while ((c = v->each(v)))
+	{
+		write(1, "%%%", 3);
+		print_car(c);
+	}
+
 
 	// Repush tests
 	c = create_car(50, 3, 150, 0xffffaa);
 	assert(c != NULL);
-	v->push(c, v);
+	v->push_front(c, v);
 	free(c);
-	test("Pushing a 2th t_car element with 50 wheels", (v->count == 2));
-
+	test("Pushing a 5th t_car element with 50 wheels", (v->count == 5));
+	//v->map(v, (void *)print_car);
 	// RemoveOne tests
+	while ((c = v->each(v)))
+	{
+		write(1, "RRR", 3);
+		print_car(c);
+	}
 	v->remove(1, v);
-	test("Removing the (2th) element", (v->count == 1));
+	test("Removing the (2th) element", (v->count == 4));
+	while ((c = v->each(v)))
+	{
+		write(1, "TTT", 3);
+		print_car(c);
+	}
 	v->pop(sec, v);
+
 	test("Popping the last (1st) element", (sec != NULL && sec->wheels == 4));
-	test("Is the vector empty ?", (v->count == 0));
+	test("Is the vector empty ?", (v->count != 0));
 
 	// Remove tests
 	v->free(v);

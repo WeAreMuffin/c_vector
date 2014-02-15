@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 18:40:23 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/14 18:24:23 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/15 05:23:29 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,22 @@ void			c_vector_free(t_vector *self)
 
 int				c_vector_remove(size_t i, t_vector *self)
 {
+	int			index;
+
+	index = (int)i;
 	if (i > 0)
 	{
 		if (!VECTOR_INBOUNDS(i))
 			return (0);
-		c_vector_memmove(VECTOR_INDEX(i), VECTOR_INDEX(i + 1), self->elt_size);
-		self->count--;
+		while (index < (int)(self->count - 1))
+		{
+			vector_memcpy(VECTOR_INDEX(index), VECTOR_INDEX(index + 1),
+							self->elt_size);
+			++index;
+		}
+		--(self->count);
 		return (1);
 	}
 	else
-	{
 		return (0);
-	}
 }

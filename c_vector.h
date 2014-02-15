@@ -6,7 +6,7 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/15 02:06:17 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/15 04:06:23 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,8 @@ void					*c_vector_memmove(void *s1, const void *s2, size_t n);
 size_t					vector_size(t_vector *self);
 size_t					vector_capacity(t_vector *self);
 int						vector_is_empty(t_vector *self);
+void	                vector_extend(size_t size, t_vector *self);
 
-/*
-** vector_operations
-*/
 void					vector_swap(t_vector *self, int index_1, int index_2);
 void					vector_pop(void *elem, t_vector *self);
 void					vector_pop_front(void *elem, t_vector *self);

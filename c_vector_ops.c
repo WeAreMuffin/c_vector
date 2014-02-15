@@ -6,14 +6,14 @@
 /*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 22:11:51 by aaubin            #+#    #+#             */
-/*   Updated: 2014/02/14 17:28:13 by aleger           ###   ########.fr       */
+/*   Updated: 2014/02/15 05:09:19 by aleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "c_vector.h"
 
-static void			vector_extend(size_t size, t_vector *self)
+void				vector_extend(size_t size, t_vector *self)
 {
 	size_t			old_c;
 
@@ -22,7 +22,7 @@ static void			vector_extend(size_t size, t_vector *self)
 		self->capacity = size;
 	else
 		self->capacity *= 2;
-	self->content = vector_realloc(self->content, old_c,
+	self->content = vector_realloc(self->content, old_c * self->elt_size,
 								self->elt_size * self->capacity);
 }
 
