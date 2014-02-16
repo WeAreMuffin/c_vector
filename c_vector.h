@@ -81,7 +81,7 @@ void					*c_vector_memmove(void *s1, const void *s2, size_t n);
 size_t					vector_size(t_vector *self);
 size_t					vector_capacity(t_vector *self);
 int						vector_is_empty(t_vector *self);
-void	                vector_extend(size_t size, t_vector *self);
+void					vector_extend(size_t size, t_vector *self);
 
 void					vector_swap(t_vector *self, int index_1, int index_2);
 void					vector_pop(void *elem, t_vector *self);
